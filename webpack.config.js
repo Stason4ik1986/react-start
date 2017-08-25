@@ -46,14 +46,15 @@ module.exports = {
                 use: cssConfig
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(jpe?g|png|gif|svg|ico)$/i,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: 'file-loader',
                         options: {
-                            limit: 8192
+                            name: 'images/[hash].[ext]'
                         }
-                    }
+                    },
+                    { loader: 'image-webpack-loader' }
                 ]
             },
         ],
